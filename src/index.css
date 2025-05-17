@@ -1,1 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --primary-color: #4f46e5;
+  --accent-color: #10b981;
+  --transparent-varient: rgba(79, 70, 229, 0.1);
+  --body-text: #1f2937;
+  --body-base: #f9fafb;
+  --error-color: #ef4444;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-display);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--body-base);
+    overflow-x: hidden;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  /* animate text wih a effect */
+  @keyframes text-shine {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-text-shien {
+    animation: text-shine 3s ease-in-out infinite alternate;
+  }
+}
+
+/* elements design */
+.input-box {
+  @apply w-full flex justify-between gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border-gray-100 outline-none focus-within:border-orange-300;
+}
+
+.btn-primary {
+  @apply w-full flex items-center justify-center gap-3 text-sm font-medium text-white shadow-lg p-[10px] rounded-md my-1 hover:bg-[var(--transparent-varient)] hover:text-white cursor-pointer;
+}
+
+.btn-small {
+  @apply flex items-center justify-center gap-3 bg-linear-to-r from-[var(--primary-color)] to-[var(--accent-color)] text-sm font-semibold text-white px-7 py-2 rounded-lg hover:bg-black hover:text-white transition-colors cursor-pointer hover:shadow-2xl;
+}
