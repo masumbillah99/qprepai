@@ -5,7 +5,7 @@
 export const APP_FEATURES = [
   {
     id: "01",
-    title: "Tailored Just for You",
+    title: "Boost Your Confidence with Smart Prep",
     description:
       "Receive personalized interview questions and answers that align with your job role, experience level, and skill focus.",
   },
@@ -35,7 +35,7 @@ export const APP_FEATURES = [
   },
   {
     id: "06",
-    title: "Boost Your Confidence with Smart Prep",
+    title: "Tailored Just for You",
     description:
       "Stay ready with smart feedback and realistic practice that simulate real interviews and reinforce what you've learned.",
   },

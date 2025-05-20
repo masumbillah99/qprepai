@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router'
+import { APP_FEATURES } from '../../utils/data'
+import { FaCode } from 'react-icons/fa6'
 
 const Home = () => {
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleCTA = () => {}
+
   return (
     <>
-      <section className='bg-[var(--transparent-varient)] backdrop-blur-md rounded-b-[60px] p-5 md:p-10'>
-        <section className='container mx-auto'>
+      {/* hero section */}
+      <section className='bg-[var(--transparent-varient)] backdrop-blur-md p-5 md:p-10'>
+        <div className='container mx-auto min-h-full'>
           {/* header */}
           <header className='flex items-center justify-between'>
             <div>
@@ -16,11 +23,16 @@ const Home = () => {
             </div>
 
             <div>
-              <button className='btn-primary'>Login / Sign Up</button>
+              <button
+                className='btn-primary'
+                onClick={() => setOpenModal(true)}
+              >
+                Login / Sign Up
+              </button>
             </div>
           </header>
 
-          {/* hero section */}
+          {/* title */}
           <div className='flex items-center gap-5 py-[100px]'>
             <div className='w-1/2'>
               <h1 className='text-4xl md:text-5xl font-bold text-[var(--body-text)] font-display leading-tight'>
@@ -34,7 +46,9 @@ const Home = () => {
                 smart explanations—tailored to your role, experience, and
                 learning pace.
               </p>
-              <button className='btn-small'>Get Started</button>
+              <button className='btn-small' onClick={() => handleCTA()}>
+                Get Started
+              </button>
             </div>
           </div>
 
@@ -43,17 +57,52 @@ const Home = () => {
             <iframe
               // width='560'
               // height='315'
-              src='https://www.youtube.com/embed/l_ubl7P265o?si=EupAyLhJecFoq6lt'
-              title='Ai Video'
+              src='https://www.youtube.com/embed/owtO0cKwtk4?si=a9vLPxPYg1lWliq3'
+              title='YouTube video player'
               frameborder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerpolicy='strict-origin-when-cross-origin'
               allowfullscreen
-              className='w-4/5 h-[500px] md:h-[500px] aspect-video rounded-xl'
+              className='w-4/5 h-11/12 md:h-[500px] aspect-video rounded-xl'
             ></iframe>
           </div>
-        </section>
+        </div>
       </section>
+
+      {/* smart features section */}
+      <section className=''>
+        <div className='container mx-auto min-h-full py-[100px]'>
+          <h2 className='text-3xl md:text-4xl text-center font-bold text-[var(--body-text)] font-display leading-tight'>
+            Smart Features Built to Help You Succeed
+          </h2>
+
+          {/* features */}
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-5 mt-12'>
+            {APP_FEATURES?.map(feature => (
+              <div
+                key={feature?.id}
+                className='bg-white p-5 md:p-8 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] cursor-pointer transform transition-transform duration-300 ease-in-out hover:translate-y-2.5'
+              >
+                <h3 className='text-xl font-bold mb-7'>{feature?.title}</h3>
+                <p className='font-body text-sm'>{feature?.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* footer */}
+      <div className='w-full text-center mb-5'>
+        <Link
+          to='https://github.com/masumbillah99/qprepai'
+          target='_blank'
+          className='inline-block text-black hover:text-[var(--primary-color)] transition-colors'
+        >
+          <p className='inline-flex items-center justify-center gap-1'>
+            Developed by <FaCode /> ...Happy Coding
+          </p>
+        </Link>
+      </div>
     </>
   )
 }
