@@ -61,9 +61,27 @@
 }
 
 .btn-primary {
-  @apply w-full flex items-center justify-center gap-3 text-sm font-medium text-white shadow-lg p-[10px] rounded-md my-1 hover:bg-[var(--transparent-varient)] hover:text-white cursor-pointer;
+  @apply flex items-center justify-center gap-3 text-sm font-medium text-white px-6 py-3 rounded-full my-1 cursor-pointer transition-colors;
+  background-image: linear-gradient(to right, var(--primary-color), #665fe3);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 .btn-small {
+  @apply flex items-center justify-center gap-3 text-sm font-semibold text-white px-6 py-2 rounded-full cursor-pointer transition-colors;
+  background-image: linear-gradient(to right, var(--primary-color), #665fe3);
+}
+
+.btn-small:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  @apply w-full flex items-center justify-center gap-3 text-sm font-medium text-white shadow-lg p-[10px] rounded-md my-1 hover:bg-[var(--transparent-varient)] hover:text-white cursor-pointer;
+}
+
+.btn-large {
   @apply flex items-center justify-center gap-3 bg-linear-to-r from-[var(--primary-color)] to-[var(--accent-color)] text-sm font-semibold text-white px-7 py-2 rounded-lg hover:bg-black hover:text-white transition-colors cursor-pointer hover:shadow-2xl;
 }

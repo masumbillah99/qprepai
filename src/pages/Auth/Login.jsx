@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Login = () => {
+const Login = ({ setCurrentPage }) => {
+  // information state
+
   return <div>Login Page</div>
 }
 
