@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router'
 import { APP_FEATURES } from '../../utils/data'
 import { FaCode } from 'react-icons/fa6'
+import Modal from '../../components/Modals/Modals'
+import Login from '../Auth/Login'
+import SignUp from '../Auth/SignUp'
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [currentPage, setCurrentPage] = useState(false)
 
   const handleCTA = () => {}
 
@@ -103,6 +107,22 @@ const Home = () => {
           </p>
         </Link>
       </div>
+
+      <Modal
+        isOpen={openModal}
+        onClose={() => {
+          setOpenModal(false)
+          setCurrentPage('login')
+        }}
+        // hideHeader
+      >
+        <div>
+          {currentPage === 'login' && <Login setCurrentPage={setCurrentPage} />}
+          {currentPage === 'signup' && (
+            <SignUp setCurrentPage={setCurrentPage} />
+          )}
+        </div>
+      </Modal>
     </>
   )
 }
