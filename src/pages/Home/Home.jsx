@@ -33,14 +33,14 @@ const Home = () => {
           </header>
 
           {/* title */}
-          <div className='flex items-center gap-5 py-[100px]'>
-            <div className='w-1/2'>
+          <div className='flex flex-col lg:flex-row items-center gap-5 py-[100px]'>
+            <div className='w-full lg:w-1/2'>
               <h1 className='text-4xl md:text-5xl font-bold text-[var(--body-text)] font-display leading-tight'>
                 Master Interviews with AI-Powered Precision
               </h1>
             </div>
 
-            <div className='w-2/5'>
+            <div className='w-full lg:w-2/5'>
               <p className='font-body font-base text-black pb-5'>
                 QPrepAI generates personalized questions, expert answers, and
                 smart explanations—tailored to your role, experience, and
@@ -63,7 +63,7 @@ const Home = () => {
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
               referrerpolicy='strict-origin-when-cross-origin'
               allowfullscreen
-              className='w-4/5 h-11/12 md:h-[500px] aspect-video rounded-xl'
+              className='w-full lg:w-4/5 h-full lg:h-11/12 md:h-[500px] aspect-video rounded-xl'
             ></iframe>
           </div>
         </div>
@@ -71,13 +71,13 @@ const Home = () => {
 
       {/* smart features section */}
       <section className=''>
-        <div className='container mx-auto min-h-full py-[100px]'>
-          <h2 className='text-3xl md:text-4xl text-center font-bold text-[var(--body-text)] font-display leading-tight'>
+        <div className='container mx-auto min-h-full pt-[100px] pb-[80px] md:pb-[100px] px-5'>
+          <h2 className='text-4xl md:text-4xl text-center font-bold text-[var(--body-text)] font-display leading-tight'>
             Smart Features Built to Help You Succeed
           </h2>
 
           {/* features */}
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-5 mt-12'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12'>
             {APP_FEATURES?.map(feature => (
               <div
                 key={feature?.id}
