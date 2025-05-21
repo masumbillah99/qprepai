@@ -8,7 +8,7 @@ import SignUp from '../Auth/SignUp'
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false)
-  const [currentPage, setCurrentPage] = useState(false)
+  const [currentPage, setCurrentPage] = useState('login')
 
   const handleCTA = () => {}
 
