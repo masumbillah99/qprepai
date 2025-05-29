@@ -30,7 +30,7 @@ const PhotoSelector = ({ image, setImage, preview, setPreview }) => {
           <img
             src={preview}
             alt='Preview'
-            className='w-20 h-20 object-cover rounded-full border border-gray-300 cursor-pointer'
+            className='w-20 h-20 object-cover rounded-full border border-gray-300'
           />
           <button
             onClick={handleRemoveImage}

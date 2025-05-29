@@ -1,14 +1,59 @@
 import React, { useState } from 'react'
 import Input from '../../components/Inputs/Input'
+import { useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import toast from 'react-hot-toast'
 
 const Login = ({ setCurrentPage }) => {
   // information state
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  const { loginUser } = useAuth()
+  const navigate = useNavigate()
 
-  const handleLoginUser = evt => {
+  // handle login form
+  const handleLoginUser = async evt => {
     evt.preventDefault()
+
+    // basic validation
+    if (!email || !password) {
+      setError('Please enter both email and password')
+      return
+    }
+
+    setError('')
+
+    // login api
+    const success = await loginUser(email, password)
+    if (success) {
+      toast.success('User login successful')
+      navigate('/dashboard')
+    } else {
+      setError('Login failed. Check email and password')
+    }
+
+    // try {
+    //   const res = await fetch(
+    //     `${import.meta.env.VITE_SERVER_URL}/api/auth/login`,
+    //     {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify({ email, password })
+    //     }
+    //   )
+    //   const data = await res.json()
+    //   if (!res.ok) {
+    //     setError(data.message || 'Login failed')
+    //     return
+    //   }
+    //   // Save user in context (no token)
+    //   login(data.user)
+    //   console.log('logged in user:', data)
+    //   navigate('/dashboard')
+    // } catch (err) {
+    //   setError('Network error')
+    // }
   }
 
   return (
