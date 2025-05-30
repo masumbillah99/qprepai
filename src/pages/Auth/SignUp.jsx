@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import Input from '../../components/Inputs/Input'
 import PhotoSelector from '../../components/Inputs/PhotoSelector'
+import useAuth from '../../hooks/useAuth'
+import { useNavigate } from 'react-router'
 
 const SignUp = ({ setCurrentPage }) => {
   const [profilePic, setProfilePic] = useState(null)
@@ -10,18 +12,27 @@ const SignUp = ({ setCurrentPage }) => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState(null)
+  const { registerUser } = useAuth()
+  const navigate = useNavigate()
 
-  const handleSignup = e => {
-    e.preventDefault()
+  const handleSignup = async evt => {
+    evt.preventDefault()
 
     if (!profilePic || !fullName || !email || !password) {
       setError('All fields are required')
       return
     }
 
-    // Optional: You can add more validation here
-    setError(null)
-    toast.success('Account created successfully!')
+    setError('')
+
+    // register api
+    const success = await registerUser(fullName, email, password)
+    if (success) {
+      toast.success('User register successful')
+      navigate('/dashboard')
+    } else {
+      setError('Register failed. Try again')
+    }
   }
 
   return (

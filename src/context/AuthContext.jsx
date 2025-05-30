@@ -6,8 +6,37 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  // ✅ Login
+  // register user
+  const registerUser = async (fullName, email, password) => {
+    setLoading(true)
 
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/api/auth/register`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ fullName, email, password })
+        }
+      )
+
+      if (!res.ok) {
+        setUser(null)
+        throw new Error('Registration failed')
+      }
+
+      await fetchProfile()
+      return { success: true, message: 'User registered successfully' }
+    } catch (err) {
+      setUser(null)
+      return false
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // login user
   const loginUser = async (email, password) => {
     setLoading(true)
     try {
@@ -69,11 +98,13 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    fetchProfile()
+    if (!user) {
+      fetchProfile()
+    }
     // eslint-disable-next-line
-  }, [])
+  }, [user])
 
-  const authInfo = { user, loading, loginUser, logout }
+  const authInfo = { user, loading, registerUser, loginUser, logout }
 
   return (
     <>
