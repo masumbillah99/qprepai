@@ -1,16 +1,26 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { APP_FEATURES } from '../../utils/data'
 import { FaCode } from 'react-icons/fa6'
 import Modal from '../../components/Modals/Modals'
 import Login from '../Auth/Login'
 import SignUp from '../Auth/SignUp'
+import useAuth from '../../hooks/useAuth'
+import ProfileCard from '../../components/Card/ProfileCard'
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false)
   const [currentPage, setCurrentPage] = useState('login')
+  const { user } = useAuth()
+  const navigate = useNavigate()
 
-  const handleCTA = () => {}
+  const handleCTA = () => {
+    if (!user) {
+      setOpenModal(true)
+    } else {
+      navigate('/dashboard')
+    }
+  }
 
   return (
     <>
@@ -27,12 +37,16 @@ const Home = () => {
             </div>
 
             <div>
-              <button
-                className='btn-primary'
-                onClick={() => setOpenModal(true)}
-              >
-                Login / Sign Up
-              </button>
+              {user ? (
+                <ProfileCard />
+              ) : (
+                <button
+                  className='btn-primary'
+                  onClick={() => setOpenModal(true)}
+                >
+                  Login / Sign Up
+                </button>
+              )}
             </div>
           </header>
 

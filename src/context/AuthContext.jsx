@@ -36,8 +36,15 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
-    setUser(null)
+    try {
+      await fetch(`${import.meta.env.VITE_SERVER_URL}/api/auth/logout`, {
+        method: 'POST',
+        credentials: 'include'
+      })
+      setUser(null)
+    } catch (err) {
+      console.error('Logout failed from logout:', err)
+    }
   }
 
   const fetchProfile = async () => {
