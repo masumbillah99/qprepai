@@ -71,7 +71,7 @@
 
 .btn-small {
   @apply flex items-center justify-center gap-3 text-sm font-semibold text-white px-6 py-2 rounded-full cursor-pointer transition-colors;
-  background-image: linear-gradient(to right, var(--primary-color), #665fe3);
+  background-color: var(--primary-color);
 }
 
 .btn-small:hover {
@@ -84,4 +84,10 @@
 
 .btn-large {
   @apply flex items-center justify-center gap-3 bg-linear-to-r from-[var(--primary-color)] to-[var(--accent-color)] text-sm font-semibold text-white px-7 py-2 rounded-lg hover:bg-black hover:text-white transition-colors cursor-pointer hover:shadow-2xl;
+}
+
+/* yt btn hide */
+a.ytp-impression-link,
+button.ytp-watch-later-button.ytp-button.ytp-show-watch-later-title {
+  display: none;
 }
