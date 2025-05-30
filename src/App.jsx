@@ -5,19 +5,29 @@ import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import SignUp from './pages/Auth/SignUp'
 import Dashboard from './pages/Dashboard/Dashboard'
+import PrivateRoute from './context/PrivateRoute'
 
 const App = () => {
   return (
     <div>
       <Router>
         <Routes>
-          {/* base route */}
+          {/* home route */}
           <Route path='/' element={<Home />} />
 
           {/* others route */}
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+
+          {/* private route */}
+          <Route
+            path='/dashboard'
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
 
