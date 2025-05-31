@@ -14,6 +14,8 @@ const Home = () => {
   const { user } = useAuth()
   const navigate = useNavigate()
 
+  console.log(user)
+
   const handleCTA = () => {
     if (!user) {
       setOpenModal(true)
@@ -59,14 +61,23 @@ const Home = () => {
             </div>
 
             <div className='w-full lg:w-2/5'>
-              <p className='font-body font-base text-black pb-5'>
+              <p className='font-body text-base text-black pb-5'>
                 QPrepAI generates personalized questions, expert answers, and
                 smart explanations—tailored to your role, experience, and
                 learning pace.
               </p>
-              <button className='btn-small' onClick={() => handleCTA()}>
-                Get Started
-              </button>
+              {user ? (
+                <button
+                  className='btn-small'
+                  onClick={() => navigate('/dashboard')}
+                >
+                  Get Started
+                </button>
+              ) : (
+                <button className='btn-small' onClick={() => handleCTA()}>
+                  Get Started
+                </button>
+              )}
             </div>
           </div>
 

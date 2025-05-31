@@ -26,7 +26,8 @@ const SignUp = ({ setCurrentPage }) => {
     setError('')
 
     // register api
-    const success = await registerUser(fullName, email, password)
+    const result = await registerUser(fullName, email, password)
+    // console.log(result)
     if (success) {
       toast.success('User register successful')
       navigate('/dashboard')
