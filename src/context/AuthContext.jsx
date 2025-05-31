@@ -8,8 +8,6 @@ export const AuthProvider = ({ children }) => {
 
   // register user
   const registerUser = async (fullName, email, password) => {
-    setLoading(true)
-
     try {
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/api/auth/register`,
@@ -27,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       await fetchProfile()
-      return { success: true, message: 'User registered successfully' }
+      return true
     } catch (err) {
       setUser(null)
       return false
@@ -38,7 +36,6 @@ export const AuthProvider = ({ children }) => {
 
   // login user
   const loginUser = async (email, password) => {
-    setLoading(true)
     try {
       const res = await fetch(
         `${import.meta.env.VITE_SERVER_URL}/api/auth/login`,
@@ -87,6 +84,7 @@ export const AuthProvider = ({ children }) => {
       if (res.ok) {
         const data = await res.json()
         setUser(data.data)
+        return data.data
       } else {
         setUser(null)
       }
@@ -98,13 +96,13 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (!user) {
-      fetchProfile()
-    }
+    // if (user) {
+    fetchProfile()
+    // }
     // eslint-disable-next-line
-  }, [user])
+  }, [])
 
-  const authInfo = { user, loading, registerUser, loginUser, logout }
+  const authInfo = { user, loading, loginUser, registerUser, logout }
 
   return (
     <>
