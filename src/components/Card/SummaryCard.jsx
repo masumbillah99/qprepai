@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
+import { getInitials } from '../../utils/helper'
 
 const SummaryCard = ({
   role,
@@ -19,7 +20,9 @@ const SummaryCard = ({
       <div className='bg-linear-to-r from-gray-200 to-gray-300 p-3 flex items-center rounded-sm gap-5'>
         {/* GU - short form */}
         <div className='bg-[#f9fafb] p-2 text-center'>
-          <span className='font-bold text-black text-base'>GU</span>
+          <span className='font-bold text-black text-base'>
+            {getInitials(role)}
+          </span>
         </div>
 
         {/* title & topics to focus */}
@@ -27,7 +30,10 @@ const SummaryCard = ({
           <h2 className='text-xl text-black font-semibold capitalize'>
             {role}
           </h2>
-          <p className='font-body text-black text-base'>{topicsToFocus}</p>
+          <p className='font-body text-black text-xs capitalize'>
+            {topicsToFocus}
+            {/* {topicsToFocus.join(', ')} */}
+          </p>
         </div>
       </div>
 
