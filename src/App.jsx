@@ -5,7 +5,6 @@ import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import SignUp from './pages/Auth/SignUp'
 import Dashboard from './pages/Dashboard/Dashboard'
-import PrivateRoute from './context/PrivateRoute'
 
 const App = () => {
   return (
@@ -20,14 +19,7 @@ const App = () => {
           <Route path='/signup' element={<SignUp />} />
 
           {/* private route */}
-          <Route
-            path='/dashboard'
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </Router>
 
