@@ -63,7 +63,7 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
         // console.log('from 62', data)
         const generatedQuestions = data.data
 
-        console.log('from 66', generatedQuestions)
+        // console.log('from 66', generatedQuestions)
 
         //  call api/sessions/create-session for creating session
         const res = await fetch(
@@ -85,10 +85,10 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
         if (res.ok) {
           const sessionData = await res.json()
           toast.success('Session created successfully!')
-          console.log('from 85', sessionData)
+          // console.log('from 85', sessionData)
           //   setOpenCreateModal
+          navigate(`/interview-prep/${data._id}`)
         }
-        // navigate(`/interview-prep/${data._id}`)
       } else {
         const errorData = await aiResponse.json()
         setError(errorData.message || 'Failed to create session')

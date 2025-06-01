@@ -57,7 +57,7 @@ const Dashboard = () => {
                 experience={session?.experience}
                 questions={session?.questions?.length || '-'}
                 description={session?.description}
-                // onSelect={() => navigate(`/interview-prep/${session?._id}`)}
+                onSelect={() => navigate(`/interview-prep/${session?._id}`)}
                 onDelete={() => setOpenDeleteAlert({ open: true, session })}
               />
             ))}
