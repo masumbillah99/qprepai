@@ -34,11 +34,10 @@ const InterviewPrep = () => {
         setSessionData(data?.session)
         setQuestionsData(data?.questions)
       } else {
-        toast.error('Failed to fetch session data')
+        console.error('Failed to fetch session data')
       }
     } catch (error) {
       console.error('Error fetching session data:', error)
-      toast.error('An error occurred while fetching session data')
     } finally {
       setIsLoading(false)
     }

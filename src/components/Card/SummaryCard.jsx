@@ -13,7 +13,7 @@ const SummaryCard = ({
 }) => {
   return (
     <div
-      className='[var(--body-base)] border border-gray-300 rounded-lg p-4 relative group'
+      className='[var(--body-base)] border border-gray-300 rounded-lg p-4 relative group cursor-pointer'
       onClick={onSelect}
     >
       {/* 1st container */}
