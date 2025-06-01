@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import Input from './Input'
 import SpinnerLoader from '../Loader/SpinnerLoader'
 import toast from 'react-hot-toast'
+// import { fetchAllSessions } from '../../utils/getData'
 
 const CreateSessionForm = ({ setOpenCreateModal }) => {
   const [formData, setFormData] = useState({
@@ -49,7 +50,7 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
             role,
             experience,
             topicsToFocus,
-            numberofQuestions: 10
+            numberofQuestions: 20
           })
         }
       )
@@ -61,9 +62,9 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
 
         // should be arry like [{question, answer}]
         // console.log('from 62', data)
-        const generatedQuestions = data.data
+        // const generatedQuestions = data.data
 
-        console.log('from 66', generatedQuestions)
+        // console.log('from 66', generatedQuestions)
 
         //  call api/sessions/create-session for creating session
         const res = await fetch(
@@ -76,7 +77,7 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
             credentials: 'include',
             body: JSON.stringify({
               ...formData,
-              questions: generatedQuestions
+              questions: data.data
             })
           }
         )
@@ -84,11 +85,17 @@ const CreateSessionForm = ({ setOpenCreateModal }) => {
         console.log('from 82', res)
         if (res.ok) {
           const sessionData = await res.json()
+
+          // ✅ Fetch all sessions after creating one
+          // const allSessions = await fetchAllSessions()
+          // console.log('Updated sessions:', allSessions)
+
           toast.success('Session created successfully!')
-          console.log('from 85', sessionData)
-          //   setOpenCreateModal
+          setOpenCreateModal(false)
+          // console.log('from 85', sessionData)
+          navigate(`/dashboard`)
+          // navigate(`/interview-prep/${data._id}`)
         }
-        // navigate(`/interview-prep/${data._id}`)
       } else {
         const errorData = await aiResponse.json()
         setError(errorData.message || 'Failed to create session')
