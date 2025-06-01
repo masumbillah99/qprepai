@@ -13,7 +13,7 @@ const SummaryCard = ({
 }) => {
   return (
     <div
-      className='[var(--body-base)] border border-gray-300 rounded-lg p-4 relative group'
+      className='[var(--body-base)] border border-gray-300 rounded-lg p-4 relative group cursor-pointer'
       onClick={onSelect}
     >
       {/* 1st container */}
@@ -51,8 +51,7 @@ const SummaryCard = ({
       {/* 2nd container */}
       <div className='flex items-center gap-5 pt-5'>
         <div className='border border-black px-2 py-1 font-body font-medium text-sm rounded-full'>
-          Experience: {experience}
-          {/* {experience === 1 ? 'year' : 'years'} */}
+          Experience: {experience} {experience === 1 ? 'years' : 'year'}
         </div>
         <div className='border border-black px-2 py-1 font-body font-medium text-sm rounded-full'>
           {questions} Q&A

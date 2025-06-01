@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <div>
-      <header className='border-b border-gray-200 py-2 px-5 md:px-0'>
+      <header className='border-b border-gray-200 py-2 px-5'>
         <div className='container mx-auto flex items-center justify-between '>
           <div>
             <Link to={'/'}>

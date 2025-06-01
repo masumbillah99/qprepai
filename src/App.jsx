@@ -5,6 +5,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import SignUp from './pages/Auth/SignUp'
 import Dashboard from './pages/Dashboard/Dashboard'
+import InterviewPrep from './pages/Dashboard/InterviewPrep'
 
 const App = () => {
   return (
@@ -20,6 +21,10 @@ const App = () => {
 
           {/* private route */}
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route
+            path='/interview-prep/:sessionId'
+            element={<InterviewPrep />}
+          />
         </Routes>
       </Router>
 

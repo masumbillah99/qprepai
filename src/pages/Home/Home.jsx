@@ -14,7 +14,7 @@ const Home = () => {
   const { user } = useAuth()
   const navigate = useNavigate()
 
-  console.log(user)
+  // console.log(user)
 
   const handleCTA = () => {
     if (!user) {
